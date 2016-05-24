@@ -20,7 +20,8 @@ RUN apt-get update && \
     rsync \
     unzip \
     xvfb \
-    chromium-browser && \
+    chromium-browser \
+    miredo && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* \
     /tmp/* \
