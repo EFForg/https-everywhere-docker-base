@@ -38,6 +38,6 @@ RUN STABLE_VERSION=$(curl -D /dev/stdout "https://download.mozilla.org/?product=
     rm firefox-latest.tar.bz2 && \
     rm firefox-esr-latest.tar.bz2
 
-RUN pip install setuptools
+RUN pip install setuptools wheel
 
 ENV DISPLAY :0
