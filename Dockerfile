@@ -15,6 +15,7 @@ RUN apt-get update && \
     libxml2-utils \
     python-dev \
     libcurl4-openssl-dev \
+    libssl-dev \
     python-lxml \
     python-software-properties \
     rsync \
@@ -39,5 +40,8 @@ RUN STABLE_VERSION=$(curl -D /dev/stdout "https://download.mozilla.org/?product=
     rm firefox-esr-latest.tar.bz2
 
 RUN pip install setuptools wheel
+
+ENV PYCURL_SSL_LIBRARY=openssl
+RUN pip install -U --force-reinstall pycurl
 
 ENV DISPLAY :0
