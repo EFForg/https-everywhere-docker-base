@@ -30,7 +30,7 @@ RUN apt-get update && \
 
 RUN STABLE_VERSION=$(curl -D /dev/stdout "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en_US" 2>&1 | sed -n '/Location: /{s|.*/firefox-\(.*\)\.tar.*|\1|p;q;}') && \
     ESR_VERSION=$(curl -D /dev/stdout "https://download.mozilla.org/?product=firefox-esr-latest&os=linux64&lang=en_US" 2>&1 | sed -n '/Location: /{s|.*/firefox-\(.*\)\.tar.*|\1|p;q;}') && \
-    curl -s -o firefox-latest.tar.bz2 "https://ftp.mozilla.org/pub/firefox/releases/$STABLE_VERSION/linux-x86_64/en-US/firefox-$STABLE_VERSION.tar.bz2" && \
+    curl -s -o firefox-latest.tar.bz2 "https://archive.mozilla.org/pub/firefox/tinderbox-builds/mozilla-release-linux64-add-on-devel/1469543944/firefox-48.0.en-US.linux-x86_64-add-on-devel.tar.bz2" && \
     curl -s -o firefox-esr-latest.tar.bz2 "https://ftp.mozilla.org/pub/firefox/releases/$ESR_VERSION/linux-x86_64/en-US/firefox-$ESR_VERSION.tar.bz2" && \
     mkdir firefox-latest && \
     mkdir firefox-esr-latest && \
