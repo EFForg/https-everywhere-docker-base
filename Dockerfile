@@ -22,6 +22,9 @@ RUN apt-get update && \
     unzip \
     xvfb \
     chromium-browser \
+    nodejs \
+    nodejs-legacy \
+    npm \
     miredo && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* \
@@ -39,8 +42,9 @@ RUN STABLE_VERSION=$(curl -D /dev/stdout "https://download.mozilla.org/?product=
     rm firefox-latest.tar.bz2 && \
     rm firefox-esr-latest.tar.bz2
 
-RUN pip install setuptools wheel
+RUN npm install --global jpm
 
+RUN pip install setuptools wheel
 ENV PYCURL_SSL_LIBRARY=openssl
 RUN pip install -U --force-reinstall pycurl
 
