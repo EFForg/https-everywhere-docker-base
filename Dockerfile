@@ -22,6 +22,7 @@ RUN apt-get update && \
     unzip \
     xvfb \
     chromium-browser \
+    libdbus-glib-1-2 \
     miredo && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* \
