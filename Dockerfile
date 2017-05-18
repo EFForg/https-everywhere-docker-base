@@ -29,6 +29,12 @@ RUN apt-get update && \
     /tmp/* \
     /var/tmp/*
 
+RUN curl -sLO "https://github.com/mozilla/geckodriver/releases/download/v0.16.1/geckodriver-v0.16.1-linux64.tar.gz" && \
+    tar -zxvf "geckodriver-v0.16.1-linux64.tar.gz" && \
+    rm -f "geckodriver-v0.16.1-linux64.tar.gz" && \
+    mv geckodriver /usr/bin/geckodriver && \
+    chmod +x /usr/bin/geckodriver
+
 RUN STABLE_VERSION=$(curl -D /dev/stdout "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en_US" 2>&1 | sed -n '/Location: /{s|.*/firefox-\(.*\)\.tar.*|\1|p;q;}') && \
     DEV_VERSION=$(curl -D /dev/stdout "https://download.mozilla.org/?product=firefox-aurora-latest-ssl&os=linux64&lang=en-US" 2>&1 | sed -n '/Location: /{s|.*/firefox-\(.*\)\.tar.*|\1|p;q;}') && \
     ESR_VERSION=$(curl -D /dev/stdout "https://download.mozilla.org/?product=firefox-esr-latest&os=linux64&lang=en_US" 2>&1 | sed -n '/Location: /{s|.*/firefox-\(.*\)\.tar.*|\1|p;q;}') && \
