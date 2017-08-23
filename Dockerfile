@@ -1,8 +1,8 @@
-FROM ubuntu:latest
+FROM ubuntu:xenial
 MAINTAINER William Budington "bill@eff.org"
 
-RUN echo "deb http://deb.torproject.org/torproject.org $(lsb_release -sc) main" > /etc/apt/sources.list.d/tor.list && \
-  echo "deb-src http://deb.torproject.org/torproject.org $(lsb_release -sc) main" >> /etc/apt/sources.list.d/tor.list
+RUN echo "deb http://deb.torproject.org/torproject.org xenial main" > /etc/apt/sources.list.d/tor.list && \
+  echo "deb-src http://deb.torproject.org/torproject.org xenial main" >> /etc/apt/sources.list.d/tor.list
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
