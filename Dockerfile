@@ -1,6 +1,8 @@
 FROM ubuntu:xenial
 MAINTAINER William Budington "bill@eff.org"
 
+WORKDIR /opt
+
 RUN echo "deb http://deb.torproject.org/torproject.org xenial main" > /etc/apt/sources.list.d/tor.list
 
 RUN gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 && \
@@ -63,3 +65,12 @@ ENV PYCURL_SSL_LIBRARY=openssl
 RUN pip install -U --force-reinstall pycurl
 
 ENV DISPLAY :0
+
+RUN pip install \
+    bsdiff4 \
+    pycurl \
+    python-Levenshtein \
+    regex \
+    selenium
+
+ENV FIREFOX firefox-latest/firefox/firefox
