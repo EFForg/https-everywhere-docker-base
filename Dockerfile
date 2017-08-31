@@ -63,3 +63,12 @@ ENV PYCURL_SSL_LIBRARY=openssl
 RUN pip install -U --force-reinstall pycurl
 
 ENV DISPLAY :0
+
+RUN pip install \
+    bsdiff4 \
+    pycurl \
+    python-Levenshtein \
+    regex \
+    selenium
+
+ENV FIREFOX firefox-latest/firefox/firefox
