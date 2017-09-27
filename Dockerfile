@@ -6,8 +6,8 @@ RUN echo "deb http://deb.torproject.org/torproject.org xenial main" > /etc/apt/s
 RUN gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 && \
   gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
 
-RUN apt update && \
-  apt install -y --no-install-recommends \
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
     python2.7 \
     python-pip \
     gcc \
@@ -60,6 +60,6 @@ RUN pip install setuptools wheel
 ENV PYCURL_SSL_LIBRARY=openssl
 RUN pip install -U --force-reinstall pycurl
 
-RUN apt -y autoremove && apt clean && rm -rf /tmp/* /var/tmp/*
+RUN apt-get -y autoremove && apt-get clean && rm -rf /tmp/* /var/tmp/*
 
 ENV DISPLAY :0
