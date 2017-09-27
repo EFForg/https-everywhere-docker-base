@@ -6,8 +6,8 @@ RUN echo "deb http://deb.torproject.org/torproject.org xenial main" > /etc/apt/s
 RUN gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 && \
   gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
 
-RUN apt-get update && \
-  apt-get install -y --no-install-recommends \
+RUN apt update && \
+  apt install -y --no-install-recommends \
     python2.7 \
     python-pip \
     gcc \
@@ -29,11 +29,7 @@ RUN apt-get update && \
     chromium-browser \
     libdbus-glib-1-2 \
     miredo \
-    tor && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/* \
-    /tmp/* \
-    /var/tmp/*
+    tor
 
 RUN curl -sLO "https://github.com/mozilla/geckodriver/releases/download/v0.16.1/geckodriver-v0.16.1-linux64.tar.gz" && \
     tar -zxvf "geckodriver-v0.16.1-linux64.tar.gz" && \
@@ -61,5 +57,10 @@ RUN pip install setuptools wheel
 
 ENV PYCURL_SSL_LIBRARY=openssl
 RUN pip install -U --force-reinstall pycurl
+
+RUN apt -y autoremove && \
+  apt autoclean && \
+  apt clean && \
+  rm -rf /tmp/* /var/tmp/*
 
 ENV DISPLAY :0
