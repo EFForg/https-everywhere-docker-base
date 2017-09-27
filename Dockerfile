@@ -53,6 +53,8 @@ RUN STABLE_VERSION=$(curl -I 'https://download.mozilla.org/?product=firefox-late
     rm firefox-dev.tar.bz2 && \
     rm firefox-esr-latest.tar.bz2
 
+ENV FIREFOX /firefox-latest/firefox/firefox
+
 RUN pip install setuptools wheel
 
 ENV PYCURL_SSL_LIBRARY=openssl
