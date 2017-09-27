@@ -29,11 +29,7 @@ RUN apt-get update && \
     chromium-browser \
     libdbus-glib-1-2 \
     miredo \
-    tor && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/* \
-    /tmp/* \
-    /var/tmp/*
+    tor
 
 RUN curl -sLO "https://github.com/mozilla/geckodriver/releases/download/v0.16.1/geckodriver-v0.16.1-linux64.tar.gz" && \
     tar -zxvf "geckodriver-v0.16.1-linux64.tar.gz" && \
@@ -57,9 +53,13 @@ RUN STABLE_VERSION=$(curl -I 'https://download.mozilla.org/?product=firefox-late
     rm firefox-dev.tar.bz2 && \
     rm firefox-esr-latest.tar.bz2
 
+ENV FIREFOX /firefox-latest/firefox/firefox
+
 RUN pip install setuptools wheel
 
 ENV PYCURL_SSL_LIBRARY=openssl
 RUN pip install -U --force-reinstall pycurl
+
+RUN apt-get -y autoremove && apt-get clean && rm -rf /tmp/* /var/tmp/*
 
 ENV DISPLAY :0
