@@ -60,9 +60,6 @@ RUN pip install setuptools wheel
 ENV PYCURL_SSL_LIBRARY=openssl
 RUN pip install -U --force-reinstall pycurl
 
-RUN apt -y autoremove && \
-  apt autoclean && \
-  apt clean && \
-  rm -rf /tmp/* /var/tmp/*
+RUN apt -y autoremove && apt clean && rm -rf /tmp/* /var/tmp/*
 
 ENV DISPLAY :0
