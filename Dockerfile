@@ -1,4 +1,4 @@
-FROM ubuntu:artful
+FROM ubuntu:bionic
 MAINTAINER William Budington "bill@eff.org"
 
 RUN apt-get update && \
