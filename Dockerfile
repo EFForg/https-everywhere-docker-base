@@ -21,7 +21,7 @@ RUN set -ex; \
   ; \
   rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install setuptools wheel
+RUN pip3 install --no-cache-dir setuptools wheel
 
 ENV PYCURL_SSL_LIBRARY=openssl
-RUN pip3 install -U --force-reinstall pycurl
+RUN pip3 install --no-cache-dir -U --force-reinstall pycurl
