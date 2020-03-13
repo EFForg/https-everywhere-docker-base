@@ -17,6 +17,7 @@ RUN set -ex; \
     libssl-dev \
     ca-certificates \
     miredo \
+    splitpatch \
     tor \
   ; \
   rm -rf /var/lib/apt/lists/*
